@@ -2,6 +2,7 @@
 
 import json
 import locale
+from os import name
 import sys
 
 
@@ -56,16 +57,20 @@ def process_data(data):
   pdf_lines="<br/>".join(pdf_lines)
   return pdf_lines
 
-#TODO: Create PDF
+# Create PDF
   import reports
-  data = [row.values() for row in data]
   reports.generate("/tmp/cars.pdf", "Sales summary for last month", pdf_lines, data)
-#TODO: Send email
+
+# Send email
   import emails
   message = emails.generate("automation@example.com", "<user>@example.com", "Sales summary for last month", pdf_lines, "/tmp/cars.pdf")
   emails.send(message)
 
 
+if __name__=="__main__":
+
+  data=load_data("car_sales.json")
+  process_data(data)
 
 
             
