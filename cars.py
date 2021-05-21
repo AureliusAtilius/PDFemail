@@ -57,7 +57,7 @@ def process_data(data):
   line3= "The most popular year was {} with {} sales.".format(popular_year[0],popular_year[1]) 
   pdf_lines=[line1,line2,line3]
   pdf_lines="<br/>".join(pdf_lines)
-  return pdf_lines
+  
 
 # Create PDF
   import reports
